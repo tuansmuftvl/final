@@ -194,6 +194,9 @@ pumpOnButton.addEventListener("click", () => {
     const startTime = Date.now();
     const endTime = startTime + durationValue * 60 * 1000;
 
+    // Cập nhật globalEndTime ngay lập tức
+    globalEndTime = endTime; 
+
     // Lưu lên Firebase
     update(ref(database, "pump"), {
         flow: flowValue,
@@ -202,6 +205,9 @@ pumpOnButton.addEventListener("click", () => {
         start_time: startTime,
         end_time: endTime
     });
+
+    // Bắt đầu đếm ngược ngay lập tức
+    startCountdown();
 });
 
 
@@ -223,14 +229,14 @@ pumpOffButton.addEventListener("click", () => {
 
 
 function updatePumpDurationDisplay(remainingTime) {
-    if (isNaN(remainingTime)) remainingTime = 0;
+    if (isNaN(remainingTime) || remainingTime < 0) {
+        remainingTime = 0;
+    }
 
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
-    pumpDurationDisplay.textContent = `${minutes} phút ${seconds} giây`;
+    pumpDurationDisplay.textContent = `${minutes} phút ${seconds.toString().padStart(2, '0')} giây`;
 }
-
-
 
 const scheduledFlowInput = document.getElementById("scheduled-flow");
 const scheduledFlowValue = document.getElementById("scheduled-flow-value");
@@ -363,18 +369,21 @@ onValue(pumpRef, (snapshot) => {
             pumpFlowValue.textContent = sliderValue;
         }
     //}
-    if (pumpEvent === 0) {
-        // Nếu bơm tắt, dừng đếm ngược trên tất cả thiết bị
+
+    // Cập nhật thời gian kết thúc từ Firebase
+    if (pumpData.end_time) {
+        globalEndTime = pumpData.end_time;
+    }
+
+    // Xử lý đếm ngược
+    if (pumpEvent === 1 && pumpData.end_time) {
+        startCountdown();
+    } else {
         clearInterval(countdownInterval);
         countdownInterval = null;
         updatePumpDurationDisplay(0);
-        return;  // Thoát sớm để không tiếp tục xử lý thời gian
     }
     
-    if (pumpData.end_time) {
-        globalEndTime = pumpData.end_time;
-        startCountdown();
-    }
 });
 
 const scheduledPumpRef = ref(database, "scheduled_pump");
@@ -444,13 +453,16 @@ function scheduleDailyPump(startTime, flowValue, durationValue) {
 
 
 function startCountdown() {
-    if (!globalEndTime) return;
+    if (!globalEndTime || globalEndTime <= Date.now()) {
+        updatePumpDurationDisplay(0);
+        return;
+    }
 
     // Xóa interval cũ nếu có
     if (countdownInterval) clearInterval(countdownInterval);
 
     function updateCountdown() {
-        let remainingTime = Math.floor((globalEndTime - Date.now()) / 1000);
+        let remainingTime = Math.ceil((globalEndTime - Date.now()) / 1000);
 
         if (remainingTime <= 0) {
             remainingTime = 0;
