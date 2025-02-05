@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giám Sát và Điều Khiển Vườn Thông Minh</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: green;">SMART GARDEN DASHBOARD
+            <div id="smart-garden">
+                GIÁM SÁT VÀ ĐIỀU KHIỂN VƯỜN THÔNG MINH
+            </div>
+        </h1>
+        <div class="Vuon-info">
+            <h2 id="Vuon-info-h2">THÔNG TIN VƯỜN</h2>
+            <div id="nodes" class="grid-container">
+                <!-- Node containers sẽ được tạo động qua JavaScript -->
+            </div>
+        </div>
+
+        <div class="Bieu-do">
+            <h2 id="Bieu-do-h2">BIỂU ĐỒ</h2>
+            <div id="charts" class="grid-container">
+                <!-- Biểu đồ sẽ được tạo động qua JavaScript -->
+            </div>            
+        </div>
+
+        <div class="Thiet-bi">
+            <div>
+                <h2 id="Dieu-khien">ĐIỀU KHIỂN THIẾT BỊ</h2>
+            </div>
+            <div class="pump-controls-wrapper">
+                <div class="pump-control">
+                    <h3 style="text-align: center; font-size: 25px;">ĐIỀU KHIỂN BƠM</h3>
+                    <input type="range" id="pump-flow" min="0" max="50" value="0">
+                    <p style="font-size: 25px;">Lưu Lượng: <span id="pump-flow-value">0</span> L/ph</p>
+                    <input type="number" id="pump-duration" style="width: 180px; height: 30px; font-size: 17px;" min="1" max="120" placeholder="Thời gian bơm (phút)" required>
+                    <p style="font-size: 25px;">Thời gian bơm còn: <span id="pump-duration-value">0 phút 0 giây</span></p>
+                    <span id="pump-status-indicator" class="indicator"></span>
+                    <button class="on-button" id="pump-on">BẬT (ON)</button>
+                    <button class="off-button" id="pump-off">TẮT (OFF)</button>
+                </div>
+            
+                <div class="pump-scheduler">
+                    <h3 style="text-align: center; font-size: 25px;">HẸN GIỜ BƠM</h3>
+                    <input type="range" id="scheduled-flow" min="0" max="50" value="0">
+                    <p style="font-size: 25px;">Lưu Lượng: <span id="scheduled-flow-value">0</span> L/ph</p>
+            
+                    <label for="start-time" style="font-size: 25px;">Thời Gian Bắt Đầu:</label>
+                    <div class="time-inputs">
+                        <input type="number" id="start-hour" min="0" max="23" placeholder="Giờ" required> :
+                        <input type="number" id="start-minute" min="0" max="59" placeholder="Phút" required> :
+                        <input type="number" id="start-second" min="0" max="59" placeholder="Giây" required>
+                    </div>
+                    <input type="number" id="schedule-duration" style="width: 180px; height: 30px; font-size: 17px;" min="1" max="120" placeholder="Thời gian bơm (phút)" required>
+                    <br>
+                    <button class="on-button" id="schedule-pump">ĐẶT HẸN GIỜ</button>
+                    <button class="cancel-button" id="cancel-schedule">HỦY</button>
+                </div>
+            </div>        
+        </div>       
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

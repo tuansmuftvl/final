@@ -1,0 +1,304 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #00ffe1; /* Màu nền xanh dương cho toàn bộ trang */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Tiêu đề */
+h1 {
+    background-color: yellow;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+    margin-bottom: 45px;
+    color: black;
+    padding: 20px; /* Khoảng cách bên trong khung */
+    border-radius: 20px; /* Bo góc khung nền */
+    text-align: center; /* Căn giữa văn bản */
+}
+#smart-garden {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+/* Cấu trúc cho các phần node và biểu đồ */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.node, .chart-container {
+    display: inline-block;
+    width: 40%;
+    margin: 50px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.node h2, .chart-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.data-display p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Cấu trúc cho phần điều khiển bơm và hẹn giờ */
+.pump-controls-wrapper {
+    display: flex;
+    justify-content: space-between;  /* Đảm bảo phần tử nằm ngang */
+    gap: 210px; /* Khoảng cách giữa các phần tử */
+    width: 94%; /* Chiếm 90% chiều rộng của container cha */
+    margin: 20px auto;
+}
+
+/* Điều chỉnh chiều rộng của các phần tử điều khiển */
+.pump-control, .pump-scheduler {
+    flex: 1; /* Các phần tử chiếm cùng một không gian */
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.pump-control h2, .pump-scheduler h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pump-control input[type="range"],
+.pump-control input[type="number"],
+.pump-scheduler input[type="range"],
+.pump-scheduler input[type="number"] {
+    width: 80%;
+    margin: 20px 0;
+}
+
+.pump-control button, .pump-scheduler button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pump-control .on-button,
+.pump-scheduler button {
+    background-color: #28a745;
+}
+
+.pump-control .off-button {
+    background-color: #dc3545;
+}
+
+.pump-control .on-button:hover,
+.pump-scheduler button:hover {
+    background-color: #218838;
+}
+
+.pump-control .off-button:hover {
+    background-color: #c82333;
+}
+
+.pump-scheduler button {
+    background-color: #007bff;
+}
+
+.pump-scheduler button:hover {
+    background-color: #0056b3;
+}
+
+.time-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Khoảng cách giữa các trường */
+}
+
+.time-inputs input[type="number"] {
+    width: 50px; /* Đủ để hiển thị 2 chữ số */
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.node {
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#Node1 {
+    background-color: #f8d7da; /* Màu nền cho Node1 */
+}
+
+#Node2 {
+    background-color: #d1e7ff; /* Màu nền cho Node2 */
+}
+
+#Node3 {
+    background-color: #d4edda; /* Màu nền cho Node3 */
+}
+
+#Node4 {
+    background-color: #fff3cd; /* Màu nền cho Node4 */
+}
+h1 {
+    font-size: 40px; /* Tăng kích thước chữ */
+    font-weight: bold; /* In đậm chữ */
+    color: rgba(0, 128, 0, 0.773); /* Màu chữ */
+    padding: 20px; /* Khoảng cách bên trong khung */
+    text-align: center; /* Căn giữa văn bản */
+  }
+#Vuon-info-h2 {
+    font-size: 40px;
+    font-weight: bold; /* In đậm chữ */
+    color: white; /* Màu chữ */
+    text-align: center; /* Căn giữa văn bản */
+}
+.Vuon-info {
+    font-size: 40px;
+    font-weight: bold; /* In đậm chữ */
+    background-color: gray; /* Màu nền */
+    color: black; /* Màu chữ */
+    padding: 20px; /* Khoảng cách bên trong khung */
+    border-radius: 20px; /* Bo góc khung nền */
+    text-align: center; /* Căn giữa văn bản */    
+    margin-left: 40px;
+    margin-right: 40px;
+}
+#Bieu-do-h2 {
+    font-size: 40px;
+    font-weight: bold; /* In đậm chữ */
+    color: white; /* Màu chữ */
+    text-align: center; /* Căn giữa văn bản */
+}
+.Bieu-do{
+    font-size: 40px;
+    font-weight: bold; /* In đậm chữ */
+    background-color: blueviolet; /* Màu nền */
+    color: black; /* Màu chữ */
+    padding: 20px; /* Khoảng cách bên trong khung */
+    border-radius: 20px; /* Bo góc khung nền */
+    text-align: center; /* Căn giữa văn bản */    
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 40px;
+}
+#Dieu-khien {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+.Thiet-bi {
+    font-size: 40px;
+    background-color: rgb(3, 70, 3); /* Màu nền */
+    color: black; /* Màu chữ */
+    padding: 20px; /* Khoảng cách bên trong khung */
+    border-radius: 20px; /* Bo góc khung nền */
+    text-align: center; /* Căn giữa văn bản */    
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+.pump-scheduler .cancel-button {
+    background-color: #ffc107;  /* Màu vàng cho nút hủy */
+}
+
+.pump-scheduler .cancel-button:hover {
+    background-color: #e0a800;  /* Màu vàng đậm khi hover */
+}
+
+
+@media screen and (max-width: 768px) {
+    body {
+        background-color: #00cc99; 
+    }
+
+    h1 {
+        font-size: 28px; 
+        padding: 15px;
+    }
+
+    #smart-garden {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .grid-container {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .node, .chart-container {
+        width: 90%; 
+        margin: 20px 0;
+    }
+
+    .pump-controls-wrapper {
+        flex-direction: column; 
+        gap: 30px;
+        width: 100%;
+    }
+
+    .pump-control, .pump-scheduler {
+        width: 90%;
+        margin: auto;
+    }
+
+    .pump-control input[type="range"],
+    .pump-control input[type="number"],
+    .pump-scheduler input[type="range"],
+    .pump-scheduler input[type="number"] {
+        width: 100%; 
+    }
+
+    .time-inputs {
+        flex-direction: column; 
+        gap: 10px;
+    }
+
+    .time-inputs input[type="number"] {
+        width: 100%;
+    }
+
+    .pump-control button, .pump-scheduler button {
+        width: 100%; 
+    }
+}
+
+
+.indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;  /* Mặc định màu đỏ khi pump_event = 0 */
+    margin-right: 10px;
+    vertical-align: middle;
+}
